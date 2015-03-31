@@ -23,8 +23,22 @@
 
 	<body>
 		<div class="container">
-			<h1>Auto-Vote Matt for OS X</h1>
-			<p>So I've made a little script (basically just a little <code>curl</code> command) wrapped into an App. You can <a href="./file/VoteMattTopStreamer.zip">download it here</a> and if you're curious here is the little command: <code>curl 'http://mattmelvin.topstreamers.com/ajax/vote' --data 'id=4073'</code></p>
+			<h1>Auto-Vote Matt</h1>
+			<!-- Via cron -->
+			<h2>Via cron on Unix (Linux and OS X)</h2>
+			<p>cron is a job scheduler on Unix system that allows to run tasks periodically. First of all, download <a href="./file/voteMatt.sh">this little script</a> and put it in a new folder in your home directory named <code>Scripts</code> (you can create this folder by typing <code>mkdir ~/Scripts</code> in a Terminal).</p>
+
+			<p>Then all we have to do is to create the task for cron. To do that, open a Terminal and type <code>crontab -e</code>. Now you're editing the configuration of cron in <code>vi</code> (a powerful text-editor made for Terminal. To start editing the file, you need to press <kbd>i</kbd>. You're now in insert mode (you see <code>-- INSERT --</code> in the lower-left corner of the Terminal)</p>
+
+			<p>Now you have to write the task you want (which is launching the file <code>~/Scripts/voteMatt.sh</code>). So you can learn how to program cron task if you want on <a href="https://en.wikipedia.org/wiki/Cron#Examples">the wikipedia page</a> but here's the one I did: <code>0 */2 * * * ~/Scripts/voteMatt.sh</code>. This task will run the script every 2 hours at 0 minute (so at midnight, 2AM, 4AM, etc.). It will only count one vote a day obviously but at least you're almost sure that that you will vote each day (also, if in a day you have several IP, it will count another vote).</p>
+
+			<p>To finish the editing, you have to press <kbd>Esc</kbd> and type <code>:wq</code> (to <b>w</b>rite the file and <b>q</b>uit the editor, and do not forget the <code>:</code>). After that, cron should say <samp>crontab: installing new crontab</samp>. You can check that your task is in place by executing <code>crontab -l</code>.</p>
+
+			<p>And now your computer will vote every day!</p>
+
+			<!-- With OS X Calendar App -->
+			<h2>Via OS X Calendar</h2>
+			<p>I've made a little script (basically just a little <code>curl</code> command) wrapped into an App. You can <a href="./file/VoteMattTopStreamer.zip">download it here</a> and if you're curious here is the little command: <code>curl 'http://mattmelvin.topstreamers.com/ajax/vote' --data 'id=4073'</code></p>
 
 			<p>So now if you run that little App, it will vote for Matt on Top Streamer (it won't show anything though, it closes automatically). If you can't launch it, you may have to allow to launch Apps from all developers (go in System Preferences > Security & Privacy > Tab General, click the lock in the lower-left corner, and then allow to run Apps from all developers)</p>
 
@@ -32,7 +46,7 @@
 
 			<p>You can finally re-enable all your calendar accounts, also in the Alerts tab of Calendar preferences you have to remove all alerts from the account "On My Mac". Then on the calendar view you can uncheck the "Script" calendar to not show all the events.</p>
 
-			<p>Now your Mac will automatically vote every day.</p>
+			<p>Now your Mac will automatically vote every day!</p>
 
 		</div><!-- /.container -->
 
