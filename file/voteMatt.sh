@@ -1,1 +1,1 @@
-(printf %s "$(date) - " && curl 'http://mattmelvin.topstreamers.com/ajax/vote' --data 'id=4073' && echo "") >> ~/Scripts/vote.log
+(printf %s "$(date) - " && curl 'http://mattmelvin.topstreamers.com/ajax/vote' --data 'id=4073' && echo "") >> ~/Scripts/vote.log 2>&1
